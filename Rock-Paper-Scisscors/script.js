@@ -2,7 +2,7 @@ var x;
 let imges = document.querySelectorAll('.img');
 let score = document.querySelector(".score");
 let resetBtn = document.querySelector("button")
-let You = 0
+let U = 0
 let Com = 0
 let result = document.querySelector("#Result")
 arr = ["rock", "paper", "scissors"]
