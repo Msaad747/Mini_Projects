@@ -32,6 +32,9 @@ const winner = () => {
       pos.forEach(i => boxes[i].style.backgroundColor = "lightgreen");
       disabledboxs();
       gameOver = true;
+      setTimeout(() => {
+        resetGame();
+      }, 2000); // reset after 2 seconds
       return;
     }
   }
@@ -40,6 +43,9 @@ const winner = () => {
   if (!gameOver && Array.from(boxes).every(box => box.innerText !== "")) {
     win_msg.innerText = "It's a Draw!";
     gameOver = true;
+    setTimeout(() => {
+      resetGame();
+    }, 2000); // reset after 2 seconds
   }
 };
 
