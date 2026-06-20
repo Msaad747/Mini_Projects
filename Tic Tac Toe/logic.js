@@ -74,6 +74,8 @@ boxes.forEach(box => {
     box.style.color = "blue";
     box.disabled = true;
 
+    P1 = false; // disable further clicks until computer moves
+
     winner();
     if (!gameOver) {
       
