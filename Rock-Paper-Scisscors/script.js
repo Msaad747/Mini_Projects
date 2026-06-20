@@ -10,6 +10,12 @@ const computer = () => {
     return arr[Math.floor(Math.random() * 3)]
 
 }
+const timestamp=()=>{
+return setTimeout(()=>{
+    result.innerText = "";
+},1000)
+}
+
 const Reset = () => {
     playerScore = 0;
     computerScore = 0;
@@ -26,11 +32,13 @@ const Score = () => {
 
 const draw = () => {
     result.innerText = "Draw"
+    timestamp();
     console.log(`No Winner`)
 }
 
 const Winner = (a) => {
     result.innerText = `Winner is ${a}`
+    timestamp();
 }
 
 
