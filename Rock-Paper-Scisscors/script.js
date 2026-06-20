@@ -1,40 +1,28 @@
-var x;
 let imges = document.querySelectorAll('.img');
 let score = document.querySelector(".score");
 let resetBtn = document.querySelector("button")
-let U = 0
-let Com = 0
-let result = document.querySelector("#Result")
-arr = ["rock", "paper", "scissors"]
-let Player = ["You", "Computer"]
+let playerScore = 0;
+let computerScore = 0;
+let result = document.querySelector("#Result");
+const arr = ["rock", "paper", "scissors"];
 
 const computer = () => {
     return arr[Math.floor(Math.random() * 3)]
 
 }
-const Reset=()=>{
-    if(You>Com)
-        console.log(`You is Winner`)
-    else
-        console.log(`Computer Win's`)
-    score.children[1].firstChild.nodeValue = 0;
+const Reset = () => {
+    playerScore = 0;
+    computerScore = 0;
     score.children[0].firstChild.nodeValue = 0;
-    You=0
-    Com=0
-    result.innerText=""
-    console.clear()
-}
+    score.children[1].firstChild.nodeValue = 0;
+    result.innerText = "";
+    console.clear();
+};
 
 const Score = () => {
-    if (x == "Computer") {
-        score.children[1].firstChild.nodeValue = Com
-    }
-    else if (x == "You") {
-        score.children[0].firstChild.nodeValue = You
-    }
-
-
-}
+    score.children[0].firstChild.nodeValue = playerScore;
+    score.children[1].firstChild.nodeValue = computerScore;
+};
 
 const draw = () => {
     result.innerText = "Draw"
@@ -48,30 +36,25 @@ const Winner = (a) => {
 
 imges.forEach(img => {
     img.addEventListener("click", () => {
-        let get = img.getAttribute("name")
-        let com_Chocie =computer();
-        if (get === com_Chocie) {
+        let playerChoice = img.getAttribute("name");
+        let computerChoice = computer();
+        
+        if (playerChoice === computerChoice) {
             draw();
         }
-        else if (get == "rock" && com_Chocie == "paper" || get == 'paper' && com_Chocie == "scissors") {
-
-            x = Player[1]
-            Winner(Player[1])
-            console.log(Player[1])
-            Com++
+        else if ((playerChoice == "rock" && computerChoice == "scissors") ||
+                 (playerChoice == "paper" && computerChoice == "rock") ||
+                 (playerChoice == "scissors" && computerChoice == "paper")) {
+            Winner("You");
+            playerScore++;
             Score();
-
         }
-        else if (get == "rock" && com_Chocie == "scissors" || get == "scissors" && com_Chocie == "paper") {
-            x = Player[0]
-            Winner(Player[0])
-            console.log(Player[0])
-            You++
+        else {
+            Winner("Computer");
+            computerScore++;
             Score();
-
         }
-
-    })
-})
+    });
+});
 
 resetBtn.addEventListener("click",Reset)
